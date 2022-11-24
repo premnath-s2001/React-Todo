@@ -1,0 +1,60 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.todo__container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: slategray;
+}
+
+.form__container {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  border: 1px solid white;
+  padding: 30px;
+}
+
+.form {
+  display: flex;
+  gap: 10px;
+}
+.form__input {
+  min-width: 300px;
+  padding: 10px;
+  border: none;
+  border-radius: 50px;
+}
+.btn__submit,
+.btn__edit,
+.btn__delete {
+  border: none;
+  padding: 5px;
+  border-radius: 100px;
+}
+
+.tasks__all {
+  display: flex;
+  min-width: 350px;
+  flex-direction: column;
+  list-style-type: none;
+  margin: 30px 5px;
+}
+.task__single {
+  display: flex;
+  padding: 10px;
+  margin: 5px;
+  border-radius: 50px;
+  background-color: aqua;
+}
+.task__name {
+  font-size: 20px;
+  flex: 1;
+}
