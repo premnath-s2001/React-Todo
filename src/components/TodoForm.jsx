@@ -7,17 +7,27 @@ function TodoForm() {
   const [task, setTask] = useState([]);
   //() =>JSON.parse(localStorage.getItem("tasks"));
   const [edit, setEdit] = useState(0);
-  const inputRef = useRef();
+  // const [deleteLast, setDeleteLast] = useState(false);
 
+  // const isFirstRender = useRef(true);
+  // console.log(isFirstRender.current);
   useEffect(() => {
     const data = localStorage.getItem("tasks");
+    console.log({ data });
     if (data) {
       setTask(JSON.parse(data));
     }
+    // isFirstRender.current = false;
   }, []);
 
   useEffect(() => {
-    if (task.length) localStorage.setItem("tasks", JSON.stringify(task)); //?. property
+    // if (task.length === 0)
+    // console.log(isFirstRender.current);
+    console.log({ task });
+    //?. property
+    localStorage.setItem("tasks", JSON.stringify(task));
+    // if (!isFirstRender.current) {
+    // }
   }, [task]);
 
   // function addToLocalStorage(task) {
@@ -33,6 +43,7 @@ function TodoForm() {
       })
     );
   }
+
   /*************************************** */
 
   function editHandler(taskId) {
@@ -51,7 +62,6 @@ function TodoForm() {
     event.preventDefault();
 
     if (edit) {
-      console.log(edit);
       const task_tobe_edited = task.find(
         (singleTask) => singleTask.id === edit
       );
@@ -61,16 +71,17 @@ function TodoForm() {
           : { id: singleTask.id, input: singleTask.input };
       });
 
-      setTask(task);
+      setTask(task_name_change);
       setInput(" ");
       setEdit(0);
+      console.log(input);
       console.log(task);
       console.log(task_name_change);
       console.log(task_tobe_edited);
       return;
     }
+
     if (input !== " ") {
-      // setInput();
       setTask([
         ...task,
         {
@@ -84,7 +95,6 @@ function TodoForm() {
     // used to reset all values
     // event.target.reset();
     // addToLocalStorage(task);
-    console.log(task);
   }
 
   /*************************************** */
